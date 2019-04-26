@@ -5,32 +5,12 @@ public class ProfileModel {
 	private String pass;
 	private String email;
 	private String section;
-	private String role;
-	
-	private String testUser = "root";
-	private String testPass = "toor";
-	private String testEmail = "jlandau2";
-	private String testSection = "CS320-103";
-	private String testRole = "User";
+	private int role;
+	private int profID;
+	private int mod;
+	private int modStat;
 	
 	public ProfileModel() {
-	}
-	
-	public String getTestUser() {
-		return testUser;
-	}
-	
-	public String getTestPass() {
-		return testPass;
-	}
-	public String getTestEmail() {
-		return testEmail;
-	}
-	public String getTestSection() {
-		return testSection;
-	}
-	public String getTestRole() {
-		return testRole;
 	}
 	public String getUser() {
 		return user;
@@ -56,10 +36,28 @@ public class ProfileModel {
 	public void setSection(String section) {
 		this.section = section;
 	}
-	public String getRole() {
+	public int getRole() {
 		return role;
 	}
-	public void setRole(String role) {
+	public void setRole(int role) {
 		this.role = role;
+	}
+	public int getProfID() {
+		return profID;
+	}
+	public void setProfID(int profID) {
+		this.profID = profID;
+	}
+	public int getMod() {
+		return mod;
+	}
+	public void setMod(int mod) {
+		this.mod = mod;
+	}
+	public int getModStat() {
+		return modStat;
+	}
+	public void setModStat(int modStat) {
+		this.modStat = modStat;
 	}
 }
