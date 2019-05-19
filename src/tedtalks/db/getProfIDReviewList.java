@@ -3,8 +3,6 @@ package tedtalks.db;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import tedtalkDB.model.Account;
-import tedtalkDB.model.Professor;
 import tedtalkDB.model.Review;
 import tedtalkDB.persist.DatabaseProvider;
 import tedtalkDB.persist.IDatabase;
@@ -19,7 +17,7 @@ public class getProfIDReviewList {
 		int prof_id= keyboard.nextInt();
 		
 		IDatabase db = DatabaseProvider.getInstance();
-		ArrayList<Review> found = db.getProfIDReviewList(prof_id);
+		ArrayList<Review> found = db.getProfIDReviewList(prof_id, 0);
 		if (found.size() == 0){
 			System.out.println("No reviews found");
 		}
@@ -28,5 +26,6 @@ public class getProfIDReviewList {
 				System.out.println(found.get(i).getDesc() + "Title:" + found.get(i).getName() + "\nTalk by:" + found.get(0).getPres());
 			}
 			}
-		}
+		keyboard.close();
+	}
 }

@@ -17,7 +17,7 @@ import tedtalkDB.model.Tags;
 import tedtalkDB.persist.*;
 
 public class TestFakeDatabase {
-	private FakeDatabase test = new FakeDatabase();
+	private FakeDatabase test = null;
 	
 	@Test
 	public void credCheckZack() {
@@ -90,7 +90,7 @@ public class TestFakeDatabase {
 		assertTrue(prof2.size() == 2);
 		
 		assertTrue(prof1.get(0).getRate() == 3);
-		assertTrue(prof2.get(1).getTag() == Tags.technology);
+		//assertTrue(prof2.get(1).getTag() == Tags.technology);
 	}
 	
 	@Test

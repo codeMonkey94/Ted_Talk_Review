@@ -1,25 +1,25 @@
 package tedtalkDB.persist;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+
 import tedtalkDB.model.Account;
 import tedtalkDB.model.NetworkAdmin;
 import tedtalkDB.model.Professor;
 import tedtalkDB.model.Review;
 import tedtalkDB.model.Student;
-import tedtalkDB.model.Tags;
+import tedtalkDB.model.keywords;
 
 public class InitialData {
 	public static List<NetworkAdmin> getAdmins() throws IOException{
 		List<NetworkAdmin> adminList = new ArrayList<NetworkAdmin>();
 		ReadCSV readAdmins = new ReadCSV("admins.csv");
 		// four superadmins created
-
 		try {
-			Integer adminID = 1;
+			Integer adminID = 1; 
 			while(true) {
 				List<String> tuple = readAdmins.next();
 				if(tuple == null) {
@@ -27,11 +27,11 @@ public class InitialData {
 				}
 				Iterator<String>i = tuple.iterator();
 				Integer.parseInt(i.next());
-				adminID = adminID++;
-				String username = i.next();
-				String password = i.next();
-				String email = i.next();
-				NetworkAdmin admin = new NetworkAdmin(username, password, email, adminID);
+				NetworkAdmin admin = new NetworkAdmin();
+				admin.setAdminId(adminID++);
+				admin.setprofID(Integer.parseInt(i.next()));
+				admin.setModStat(Integer.parseInt(i.next()));
+				
 				adminList.add(admin);
 			}
 			System.out.println("adminList loaded from CSV file");
@@ -41,12 +41,13 @@ public class InitialData {
 			readAdmins.close();
 		}
 	}
+	
 	public static List<Professor> getProfs() throws IOException{
 		List<Professor> profList = new ArrayList<Professor>();
 		ReadCSV readProfs = new ReadCSV("professors.csv");
 		// prof created
 		try {
-			Integer profID = 10000;
+			Integer profID = 1;
 			while(true) {
 				List<String> tuple = readProfs.next();
 				if(tuple == null) {
@@ -54,11 +55,12 @@ public class InitialData {
 				}
 				Iterator<String>i = tuple.iterator();
 				Integer.parseInt(i.next());
-				profID = profID++;
-				String username = i.next();
-				String password = i.next();
-				String email = i.next();
-				Professor prof = new Professor(username, password, email, profID);
+				Professor prof = new Professor();
+				
+				prof.setProfessorID(profID++);
+				prof.setprofID(Integer.parseInt(i.next()));
+				prof.setMod(Integer.parseInt(i.next()));
+				
 				profList.add(prof);
 			}
 			System.out.println("profList loaded from CSV file");
@@ -74,7 +76,7 @@ public class InitialData {
 		ReadCSV readStudents = new ReadCSV("students.csv");
 		// four superadmins created
 		try {
-			Integer studentID = 20000;
+			Integer studentID = 1;
 			while(true) {
 				List<String> tuple = readStudents.next();
 				if(tuple == null) {
@@ -82,12 +84,13 @@ public class InitialData {
 				}
 				Iterator<String>i = tuple.iterator();
 				Integer.parseInt(i.next());
-				studentID = studentID++;
-				String username = i.next();
-				String password = i.next();
-				String email = i.next();
-				String section = i.next();
-				Student student = new Student(username, password, email, section, studentID);
+				Student student = new Student();
+				
+				student.setStudentID(studentID++);
+				student.setprofID(Integer.parseInt(i.next()));
+				student.setSection(i.next()); 
+				student.setMajor(i.next());
+				
 				studentList.add(student);
 			}
 			System.out.println("studentList loaded from CSV file");
@@ -98,7 +101,8 @@ public class InitialData {
 		}
 	}
 	
-	public static List<Review> getReviews() throws IOException{		
+	@SuppressWarnings("deprecation")
+	public static List<Review> getReviews() throws IOException, ParseException{		
 		List<Review> reviewList = new ArrayList<Review>();
 		
 		ReadCSV readReviews = new ReadCSV("reviews.csv");
@@ -121,7 +125,13 @@ public class InitialData {
 				int profID = Integer.parseInt(i.next());
 				String tag = i.next();
 				int status = Integer.parseInt(i.next());
-				Review review = new Review(url, name, rate, pres, desc, profID, reviewID, tag, status);
+				String date = i.next();
+				java.util.Date utilDate = new java.util.Date(date);
+			    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+			    System.out.println("utilDate:" + utilDate);
+			    System.out.println("sqlDate:" + sqlDate);
+
+				Review review = new Review(url, name, rate, pres, desc, profID, reviewID, tag, status, sqlDate);
 				reviewList.add(review);
 			}
 			System.out.println("studentList loaded from CSV file");
@@ -129,6 +139,94 @@ public class InitialData {
 		}
 		finally {
 			readReviews.close();
+		}
+	}
+
+	public static List<Account> getAccounts() throws IOException, ParseException {
+		List<Account> accountList = new ArrayList<Account>();
+		ReadCSV readStudents = new ReadCSV("accounts.csv");
+		// four superadmins created
+		try {
+			Integer profID = 1;
+			while(true) {
+				List<String> tuple = readStudents.next();
+				if(tuple == null) {
+					break;
+				}
+				Iterator<String>i = tuple.iterator();
+				Integer.parseInt(i.next());
+				Account account = new Account();
+				
+				account.setprofID(profID++);
+				account.setUsername(i.next());
+				account.setPassword(i.next());
+				account.setEmail(i.next());
+				account.setRole(Integer.parseInt(i.next()));
+				
+				accountList.add(account);
+			}
+			System.out.println("accountList loaded from CSV file");
+			return accountList;
+		}
+		finally {
+			readStudents.close();
+		}
+	}
+	public static List<keywords> getKeywords() throws IOException, ParseException {
+		List<keywords> keyList = new ArrayList<keywords>();
+		ReadCSV readKeyWords = new ReadCSV("keywords.csv");
+		// four superadmins created
+		try {
+			Integer keywordID = 1;
+			while(true) {
+				List<String> tuple = readKeyWords.next();
+				if(tuple == null) {
+					break;
+				}
+				Iterator<String>i = tuple.iterator();
+				Integer.parseInt(i.next());
+				keywords newkey = new keywords();
+				newkey.setkeywordID(keywordID++);
+				newkey.setkeyWord(i.next());
+				newkey.setReviewID(Integer.parseInt(i.next()));
+				keyList.add(newkey);
+			}
+			System.out.println("keywordList loaded from CSV file");
+			return keyList;
+		}
+		finally {
+			readKeyWords.close();
+		}
+	}
+	public static List<Student> getNewStudents() throws IOException{
+		List<Student> studentList = new ArrayList<Student>();
+		ReadCSV readStudents = new ReadCSV("newStudents.csv");
+		// four superadmins created
+		try {
+			Integer newStudentID = 1;
+			while(true) {
+				List<String> tuple = readStudents.next();
+				if(tuple == null) {
+					break;
+				}
+				Iterator<String>i = tuple.iterator();
+				Integer.parseInt(i.next());
+				Student student = new Student();
+				
+				student.setNewStudentID(newStudentID++);
+				student.setUsername(i.next());
+				student.setPassword(i.next());
+				student.setEmail(i.next());
+				student.setSection(i.next()); 
+				student.setMajor(i.next());
+				
+				studentList.add(student);
+			}
+			System.out.println("newStudentList loaded from CSV file");
+			return studentList;
+		}
+		finally {
+			readStudents.close();
 		}
 	}
 }

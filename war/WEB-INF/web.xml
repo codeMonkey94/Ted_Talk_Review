@@ -16,6 +16,18 @@
 	<servlet-class>tedtalk.servlet.profileservlet</servlet-class>
 </servlet>
 <servlet>
+	<servlet-name>studentServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.studentservlet</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>professorServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.professorservlet</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>networkAdminServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.networkadminservlet</servlet-class>
+</servlet>
+<servlet>
 	<servlet-name>loginServlet</servlet-name>
 	<servlet-class>tedtalk.servlet.loginservlet</servlet-class>
 </servlet>
@@ -24,33 +36,208 @@
 	<servlet-class>tedtalk.servlet.reviewservlet</servlet-class>
 </servlet>
 <servlet>
-	<servlet-name>requestServlet</servlet-name>
-	<servlet-class>tedtalk.servlet.requestservlet</servlet-class>
+	<servlet-name>professorSettingServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.professorsettingservlet</servlet-class>
 </servlet>
+<servlet>
+	<servlet-name>createAdminServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.createadminservlet</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>createProfessorServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.createprofessorservlet</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>networkAdminSettingServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.networkadminsettingservlet</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>createStudentServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.createstudentservlet</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>networkAdminHomeServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.networkadminhomeservlet</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>professorHomeServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.professorhomeservlet</servlet-class>
+</servlet><servlet>
+	<servlet-name>studentHomeServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.studenthomeservlet</servlet-class>
+</servlet>
+<servlet>
+    <servlet-name>promoteDemoteServlet</servlet-name>
+    <servlet-class>tedtalk.servlet.promotedemoteservlet</servlet-class>
+</servlet>
+<servlet>
+    <servlet-name>removeAccountServlet</servlet-name>
+    <servlet-class>tedtalk.servlet.removeaccountservlet</servlet-class>
+</servlet>
+<servlet>
+    <servlet-name>removeStudentServlet</servlet-name>
+    <servlet-class>tedtalk.servlet.removestudentservlet</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>resultServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.resultservlet</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>pendingServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.pendingservlet</servlet-class>
+</servlet>
+<servlet>
+    <servlet-name>resetPasswordServlet</servlet-name>
+    <servlet-class>tedtalk.servlet.resetpasswordservlet</servlet-class>
+</servlet>
+<servlet>
+    <servlet-name>sentResetToEmailServlet</servlet-name>
+    <servlet-class>tedtalk.servlet.sentresettoemailservlet</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>approvedStudentsServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.approvedStudents</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>checkStudentDateAdminServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.checkstudentdateadminservlet</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>checkStudentDateProfessorServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.checkstudentdateprofessorservlet</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>studentOverviewServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.studentoverviewservlet</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>professorReviewQueueServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.professorreviewqueueservlet</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>adminReviewQueueServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.adminreviewqueueservlet</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>approvedReviewServlet</servlet-name>
+	<servlet-class>tedtalk.servlet.approvedReviews</servlet-class>
+</servlet>    
 
+<!-- servlet mapping -->
 <servlet-mapping>
 	<servlet-name>homeServlet</servlet-name>
 	<url-pattern>/home</url-pattern>
 </servlet-mapping>
-
+<servlet-mapping>
+	<servlet-name>networkAdminHomeServlet</servlet-name>
+	<url-pattern>/networkadminHome</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>professorHomeServlet</servlet-name>
+	<url-pattern>/professorHome</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>studentHomeServlet</servlet-name>
+	<url-pattern>/studentHome</url-pattern>
+</servlet-mapping>
 <servlet-mapping>
 	<servlet-name>loginServlet</servlet-name>
 	<url-pattern>/login</url-pattern>
 </servlet-mapping>
-
 <servlet-mapping>
 	<servlet-name>reviewServlet</servlet-name>
 	<url-pattern>/review</url-pattern>
 </servlet-mapping>
-
-<servlet-mapping>
-	<servlet-name>requestServlet</servlet-name>
-	<url-pattern>/request</url-pattern>
-</servlet-mapping>
-
 <servlet-mapping>
 	<servlet-name>profileServlet</servlet-name>
 	<url-pattern>/profile</url-pattern>
 </servlet-mapping>
-
-</web-app>
+<servlet-mapping>
+	<servlet-name>studentServlet</servlet-name>
+	<url-pattern>/student</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>networkAdminServlet</servlet-name>
+	<url-pattern>/networkadmin</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>networkAdminSettingServlet</servlet-name>
+	<url-pattern>/networkadminSetting</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>createProfessorServlet</servlet-name>
+	<url-pattern>/createProfessor</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>createStudentServlet</servlet-name>
+	<url-pattern>/createStudent</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>createAdminServlet</servlet-name>
+	<url-pattern>/createAdmin</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>professorServlet</servlet-name>
+	<url-pattern>/professor</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>professorSettingServlet</servlet-name>
+	<url-pattern>/professorSetting</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>promoteDemoteServlet</servlet-name>
+	<url-pattern>/promoteDemote</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>removeAccountServlet</servlet-name>
+	<url-pattern>/removeAcc</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>removeStudentServlet</servlet-name>
+	<url-pattern>/removeStudent</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>resultServlet</servlet-name>
+	<url-pattern>/result</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>pendingServlet</servlet-name>
+	<url-pattern>/pending</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>resetPasswordServlet</servlet-name>
+	<url-pattern>/resetPassword</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>sentResetToEmailServlet</servlet-name>
+	<url-pattern>/sentResetToEmail</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>approvedStudentsServlet</servlet-name>
+	<url-pattern>/approvedStudents</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>checkStudentDateAdminServlet</servlet-name>
+	<url-pattern>/checkStudentDateAdmin</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>checkStudentDateProfessorServlet</servlet-name>
+	<url-pattern>/checkStudentDateProfessor</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>studentOverviewServlet</servlet-name>
+	<url-pattern>/studentOverview</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+	<servlet-name>professorReviewQueueServlet</servlet-name>
+	<url-pattern>/professorReviewQueue</url-pattern>
+</servlet-mapping>
+ <servlet-mapping>
+	<servlet-name>adminReviewQueueServlet</servlet-name>
+	<url-pattern>/adminReviewQueue</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>approvedReviewServlet</servlet-name>
+	<url-pattern>/approvedReview</url-pattern>
+</servlet-mapping>
+</web-app>	

@@ -4,10 +4,23 @@
 	text-align: center;
 	color: purple
 	}
-	body{
-	background-color: grey;		
+	h2{
+	text-align: center;
+	color: purple;
 	}
-
+	h3{
+	text-align: center;
+	color: purple;
+	}
+	body{
+		background-color: grey;
+		color: white;
+	}
+	hr{
+		height:10px;
+		background-color:purple;
+		border-color:purple;
+	}
 	#buttonForm{
 	border: 1px solid black;
 	color: white;
@@ -16,6 +29,8 @@
 	text-decoration: none;
 	display: inline-block;
 	font-size: 9px;		
+	margin-left: 10px;
+	margin-right: 10px;
 	}
 	</style>
 </html>
